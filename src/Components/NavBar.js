@@ -2,12 +2,14 @@ import React from 'react'
 
 const NavBar = () => {
     return (
-        <nav class = "bg-white border-b border-gray shadow-sm">
+      <nav class = "bg-white border-b border-gray shadow-sm">
         <div class = "flex m-auto justify-between sm:max-w-5xl px-7 py-3">
           
-          <div class = "flex pt-0.5 items-center space-x-1.5">
-            <p id = "title" class = "text-transparent bg-clip-text bg-gradient-to-tr from-orange-500 to-fuchsia-700 text-3xl tracking-tighter">Gruhb</p>
-            <img src = "/images/food.png" class = "h-10 w-10"></img>
+          <div class = "flex pt-0.5 items-center space-x-0.5">
+            <p id = "title" class = "bg-clip-text text-3xl tracking-tighter">gr</p>
+            <span class = "inline-flex pb-1"><img src = "/images/food.png" class = "h-7 w-7"></img></span>
+            <p id = "title" class = "bg-clip-text text-3xl tracking-tighter">hb</p>
+            {/* <img src = "/images/food.png" class = "h-10 w-10"></img> */}
           </div>
 
           <ul class = "flex space-x-8 items-center">
@@ -37,7 +39,7 @@ const NavBar = () => {
 
             <li>
             {/* <img class="block mx-auto h-8 w-8 rounded-full sm:mx-0 sm:shrink-0" src="//www.explorewithola.com/wp-content/uploads/2020/09/rsz_1rsz_1img_6358.jpg" alt="Woman's Face"></img> */}
-                <button type="button" class = " transition ease-in m-auto border-2 px-4 pt-0.5 rounded-full border-fuchsia-700 text-fuchsia-700 hover:text-orange-500 hover:border-orange-500 ">Log In</button>
+                <button type="button" class = " transition  ease-in m-auto border-2 px-4 pt-0.5 rounded-full border-fuchsia-700 text-fuchsia-700 hover:text-orange-500 hover:border-orange-500 ">Log In</button>
             </li>
           </ul>
         </div>
