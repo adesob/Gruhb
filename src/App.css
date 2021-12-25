@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dokdo&family=Frijole&family=Liu+Jian+Mao+Cao&family=NTR&family=Over+the+Rainbow&family=Rock+3D&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
 *{
   margin: 0;
@@ -9,5 +10,11 @@
 }
 
 #title{
-  font-family: 'Rock 3D', cursive; 
+  font-family: 'Frijole', cursive; 
+}
+
+#title-2{
+  /* font-family: 'Zeyada', cursive; */
+  /* font-family: 'Liu Jian Mao Cao', cursive; */
+  font-family: 'Over the Rainbow', cursive;
 }
