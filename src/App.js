@@ -3,14 +3,15 @@ import {useState, useEffect} from 'react'
 import './App.css';
 import SplashPage from'./Components/SplashPage'
 import NavBar from'./Components/NavBar'
+import Trending from './Components/Trending'
 
 function App() {
   const [show, setShow] = useState(true)
-
-  // On componentDidMount set the timer
+  
+  
   useEffect(() => {
     const timeId = setTimeout(() => {
-      // After 3 seconds set the show value to false
+      // Time for Splasp page component
       setShow(false)
       console.log(show)
     }, 2500)
@@ -28,7 +29,9 @@ function App() {
       
       {/* Loading Page */}
       {show && <SplashPage/>} 
+      
       {!show && <NavBar/>}
+      {!show && <Trending/>}
     </div>
   );
 
