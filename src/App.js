@@ -7,6 +7,7 @@ import Trending from './Components/Trending'
 
 function App() {
   const [show, setShow] = useState(true)
+  const [trdnrep, setTrdnrep] = useState([])
   
   
   useEffect(() => {
