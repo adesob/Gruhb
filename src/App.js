@@ -4,20 +4,30 @@ import './App.css';
 import SplashPage from'./Components/SplashPage'
 import NavBar from'./Components/NavBar'
 import Trending from './Components/Trending'
+import Latest from './Components/Latest'
+import Footer from './Components/Footer'
 
 function App() {
-  const [show, setShow] = useState(true)
-  const [trdnrep, setTrdnrep] = useState([])
-  const[trending, setTrending] = useState([])
-  const[trendingState, setTrendingState] = useState(false)
+  const [show, setShow] = useState(true) //state of the splash page
+  
+  const[trending, setTrending] = useState([]) //trending list state
+  const[latest, setLastest] = useState([]) //lastest recipes list state
+  const[loadingState, setLoadingState] = useState(false) //if trending list has been loaded 
+  
+  
+  
   
   useEffect(() => {
 
     const getTrending = async () => {
       const trendingPosts = await fetchTrending(); 
-      setTrending(trendingPosts.slice(0,8));
-      setTrendingState(true);
-      console.log('result', trending)
+      
+      setTrending(trendingPosts[2].items.slice(0,8));
+
+      setLastest(trendingPosts.slice(16,24));
+
+      setLoadingState(true);
+      // console.log('result', trending)
     }
 
     getTrending()
@@ -34,15 +44,15 @@ function App() {
   }, []);
   
   const fetchTrending = async () => {
-    const res = await fetch("https://tasty.p.rapidapi.com/feeds/list?size=2&timezone=%2B0700&vegetarian=false&from=0", {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "tasty.p.rapidapi.com",
-            "x-rapidapi-key": "4b2aa70226msh86a252cadbae61ep1ee408jsne2ce7af60c33"
+    const res = await fetch("https://tasty.p.rapidapi.com/feeds/list?size=50&timezone=%2B0700&vegetarian=false&from=0", {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "tasty.p.rapidapi.com",
+        "x-rapidapi-key": "9596fddf2amsh59f445648c4a937p17acf4jsn76a4bed7687f"
         }
     });
     const data = await res.json();
-    const output = await data.results[2].items
+    const output = await data.results
     console.log(output)
 
     return output
@@ -56,7 +66,9 @@ function App() {
       {show && <SplashPage/>} 
       
       {!show && <NavBar/>}
-      {!show && trendingState && <Trending posts = {trending}/>}
+      {!show && loadingState && <Trending posts = {trending}/>}
+      {!show && loadingState && <Latest posts = {latest}/>}
+      {!show && loadingState && <Footer/>}
     </div>
   );
 
