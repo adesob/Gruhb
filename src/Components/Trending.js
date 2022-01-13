@@ -1,38 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-const Trending = () => {
-    
-    
-    const[trending, setTrending] = useState([])
-    
-    useEffect(() =>{
-
-        const getTrending = async () => {
-            const trendingPosts = await fetchTrending(); 
-            setTrending(trendingPosts.slice(0,8));
-            console.log('result', trending)
-        }
-
-        getTrending()
-        // fetchTrending()
-    }, [])
-    
-
-    const fetchTrending = async () => {
-        const res = await fetch("https://tasty.p.rapidapi.com/feeds/list?size=2&timezone=%2B0700&vegetarian=false&from=0", {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "tasty.p.rapidapi.com",
-                "x-rapidapi-key": "4b2aa70226msh86a252cadbae61ep1ee408jsne2ce7af60c33"
-            }
-        });
-        const data = await res.json();
-        const output = await data.results[2].items
-        console.log(output)
-
-        return output
-    }
-
+const Trending = ({posts}) => {
 
     return (
         <section id = "trending" class = "">
@@ -40,7 +8,7 @@ const Trending = () => {
                 <p class = "text-3xl font-black"> what's trending?</p>
 
                 <div class = "flex flex-wrap my-3 w-full">
-                    {trending.map((post) => (
+                    {posts.map((post) => (
                         <TrendingPost img = {post.thumbnail_url} title = {post.name} id = {post.id}/>
                     ))}
                     
