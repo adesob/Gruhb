@@ -7,7 +7,7 @@ const Trending = ({posts}) => {
     return (
         <section id = "trending" class = " ">
            <div class = "mx-auto my-4 sm: max-w-4xl px-7">
-                <p class = "text-2xl font-black"> what's trending?</p>
+                <p class = "text-xl font-black title-3 tracking-wide"> what's trending?</p>
 
                 <div class = "flex flex-wrap my-3 w-full">
                     {posts.map((post) => (

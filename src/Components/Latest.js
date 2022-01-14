@@ -5,7 +5,7 @@ const Latest = ({posts}) => {
     return (
         <section id = "latest" class = " ">
            <div class = "mx-auto my-4 sm: max-w-4xl px-7">
-                <p class = "text-3xl font-black"> latest </p>
+                <p className = "text-xl font-black title-3 tracking-wide"> what's new? </p>
 
                 <div class = "flex flex-wrap my-3 w-full">
                     {posts.map((post) => (

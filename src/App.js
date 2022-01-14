@@ -52,7 +52,7 @@ function App() {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "tasty.p.rapidapi.com",
-        "x-rapidapi-key": "9596fddf2amsh59f445648c4a937p17acf4jsn76a4bed7687f"
+        "x-rapidapi-key": "a9fde64311msh9a1484e8fa684aep1c01d9jsnbff88337eac7"
         }
     });
     const data = await res.json();
@@ -78,9 +78,13 @@ function App() {
             <>
               {show && <SplashPage/>}
               {!show && <NavBar/>} 
-              {!show && loadingState && <Trending posts = {trending}/>}
-              {!show && loadingState && <Latest posts = {latest}/>}
-              {!show && loadingState && <Footer/>}
+              {!show && loadingState && 
+              <>
+                <Trending posts = {trending}/>
+                <Latest posts = {latest}/>
+                <Footer/>
+              </>
+              }
             </>}
           />
 
