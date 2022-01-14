@@ -1,14 +1,17 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const NavBar = () => {
     return (
-      <nav class = "bg-white border-b border-gray shadow-sm">
-        <div class = "flex m-auto justify-between sm:max-w-4xl px-7 py-3">
+      <nav class = "bg-white border-b border-gray shadow-sm ">
+        <div class = "flex m-auto justify-between sm:max-w-4xl px-7 py-3 ">
           
-          <div class = "flex pt-0.5 items-center space-x-0.5">
-            <p id = "title" class = "bg-clip-text text-3xl tracking-tighter">gr</p>
-            <span class = "inline-flex pb-1"><img src = "/images/food.png" class = "h-7 w-7"></img></span>
-            <p id = "title" class = "bg-clip-text text-3xl tracking-tighter">hb</p>
+          <div class>
+            <Link to = '/' class = "flex pt-0.5 items-center space-x-0.5 hover:scale-80">
+              <p id = "title" class = "bg-clip-text text-3xl tracking-tighter">gr</p>
+              <span class = "inline-flex pb-1"><img src = "/images/food.png" class = "h-7 w-7"></img></span>
+              <p id = "title" class = "bg-clip-text text-3xl tracking-tighter">hb</p>
+            </Link>
             {/* <img src = "/images/food.png" class = "h-10 w-10"></img> */}
           </div>
 

@@ -1,45 +1,49 @@
 import React, { Component } from 'react'
 import {useState, useEffect} from 'react'
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css';
 import SplashPage from'./Components/SplashPage'
 import NavBar from'./Components/NavBar'
 import Trending from './Components/Trending'
 import Latest from './Components/Latest'
 import Footer from './Components/Footer'
+import Recipe from './Components/Recipe'
 
 function App() {
   const [show, setShow] = useState(true) //state of the splash page
   
-  const[trending, setTrending] = useState([]) //trending list state
-  const[latest, setLastest] = useState([]) //lastest recipes list state
-  const[loadingState, setLoadingState] = useState(false) //if trending list has been loaded 
+  const [trending, setTrending] = useState([]) //trending list state
+  const [latest, setLastest] = useState([]) //lastest recipes list state
+  const [loadingState, setLoadingState] = useState(false) //if trending list has been loaded 
   
   
   
   
   useEffect(() => {
 
-    const getTrending = async () => {
-      const trendingPosts = await fetchTrending(); 
-      
-      setTrending(trendingPosts[2].items.slice(0,8));
+    if(show == true){
+      const getTrending = async () => {
+        const trendingPosts = await fetchTrending(); 
+        
+        setTrending(trendingPosts[2].items.slice(0,8));
 
-      setLastest(trendingPosts.slice(16,24));
+        setLastest(trendingPosts.slice(16,24));
 
-      setLoadingState(true);
-      // console.log('result', trending)
-    }
+        setLoadingState(true);
+        // console.log('result', trending)
+      }
 
-    getTrending()
+      getTrending()
 
-    const timeId = setTimeout(() => {
-      // Time for Splash page component
-      setShow(false)
-      console.log(show)
-    }, 2500)
+      const timeId = setTimeout(() => {
+        // Time for Splash page component
+        setShow(false)
+        console.log(show)
+      }, 2500)
 
-    return () => {
-      clearTimeout(timeId)
+      return () => {
+        clearTimeout(timeId)
+      }
     }
   }, []);
   
@@ -53,23 +57,37 @@ function App() {
     });
     const data = await res.json();
     const output = await data.results
-    console.log(output)
+    // console.log(output)
 
     return output
   }
   
 
   return (
-    <div className="App">
-      
-      {/* Loading Page */}
-      {show && <SplashPage/>} 
-      
-      {!show && <NavBar/>}
-      {!show && loadingState && <Trending posts = {trending}/>}
-      {!show && loadingState && <Latest posts = {latest}/>}
-      {!show && loadingState && <Footer/>}
-    </div>
+    <Router>
+      <div className="App">
+        
+        {/* Loading Page */}
+        {/* {!show && <NavBar/>} */}
+
+        
+        
+        
+        <Routes>
+          <Route path='/' element = {
+            <>
+              {show && <SplashPage/>}
+              {!show && <NavBar/>} 
+              {!show && loadingState && <Trending posts = {trending}/>}
+              {!show && loadingState && <Latest posts = {latest}/>}
+              {!show && loadingState && <Footer/>}
+            </>}
+          />
+
+          <Route path ='/Recipe/:id' element = {<><NavBar/><Recipe/></>}/>
+        </Routes>
+      </div>
+    </Router>
   );
 
   

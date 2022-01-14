@@ -3,7 +3,7 @@ import React from 'react'
 const SplashPage = () => {
     return (
 
-        <div class = "w-screen h-screen bg-zinc-900 flex items-center">
+        <div class = "w-screen h-screen bg-zinc-900 flex items-center z-10">
          
             <div class = "mx-auto flex flex-col items-center"> 
                 <p id = "title" class = "animate-pulse tracking-tighter text-8xl text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-fuchsia-700">GRUH
