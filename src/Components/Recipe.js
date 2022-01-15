@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
+import Footer from './Footer'
 
 const Recipe = () => {
     const params = useParams()
@@ -151,7 +152,7 @@ const Recipe = () => {
 
 
 
-            <Link to = "/" ><p>Go Back</p></Link>
+            <Footer/>
             </>
             }
         </div>
